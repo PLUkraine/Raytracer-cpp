@@ -8,6 +8,7 @@
 
 // STD LIB
 #include <iostream>
+#include <chrono>
 // IMAGING
 #include <FreeImage.h>
 // GLM
@@ -22,7 +23,7 @@
 const int WIDTH = 640;
 const int HEIGHT = 480;
 const int MAX_RECURSION_LEVEL = 5;
-const int THREADS_COUNT = 64;
+const int THREADS_COUNT = 30;
 
 void GlobalInit()
 {
@@ -48,7 +49,12 @@ int main(int argc, const char * argv[]) {
     Framebuffer colorBuffer(input.width, input.height);
     
     colorBuffer.Clear();
+    auto timeStart = std::chrono::system_clock::now();
+//        raytracer.RenderScene(input.camera, input.scene, &colorBuffer, input.maxRayRecursion);
     raytracer.RenderSceneParallel(input.camera, input.scene, &colorBuffer, input.maxRayRecursion, THREADS_COUNT);
+    auto timeEnd = std::chrono::system_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(timeEnd - timeStart);
+    std::cout << "Time: " << elapsed.count()/1000.f << std::endl;
     
     colorBuffer.SaveImage(input.outputFilepath.c_str());
 

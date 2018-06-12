@@ -29,7 +29,7 @@ void Raytracer::RenderScene(const Camera &camera, const WorldScene &scene, Frame
 }
 
 // Derevo would be proud!
-void Raytracer::RenderSceneParallel(const Camera &camera, const WorldScene &scene, Framebuffer *framebuffer, int recursiveLevel, int numberOfThreads)
+void Raytracer::RenderSceneParallel(const Camera &camera, const WorldScene &scene, Framebuffer *framebuffer, int recursiveLevel, int numberOfThreads, bool verbose)
 {
     // draw only some horizontal stripes
     auto threadFunc = [&](int fromY, int toY) {
@@ -42,8 +42,10 @@ void Raytracer::RenderSceneParallel(const Camera &camera, const WorldScene &scen
                                          0xff * color.g,
                                          0xff * color.b);
             }
+            if (verbose) {
+                std::cout << "Row " << y << " finished!" << std::endl;
+            }
         }
-        std::cout << fromY << "; " << toY << " finished!" << std::endl;
     };
     
     int partition = framebuffer->height() / numberOfThreads;
