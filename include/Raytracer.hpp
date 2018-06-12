@@ -27,7 +27,7 @@ class Raytracer
 {
 public:
     void RenderScene(const Camera &camera, const WorldScene &scene, Framebuffer *framebuffer, int recursiveLevel=2);
-    void RenderSceneParallel(const Camera &camera, const WorldScene &scene, Framebuffer *framebuffer, int recursiveLevel=2, int numberOfTheads=128);
+    void RenderSceneParallel(const Camera &camera, const WorldScene &scene, Framebuffer *framebuffer, int recursiveLevel=2, int numberOfTheads=128, bool verbose=false);
     
 private:
     template <typename T>

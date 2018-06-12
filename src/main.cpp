@@ -36,6 +36,7 @@ void GlobalDispose()
     FreeImage_DeInitialise();
 }
 WorldScene CreateScene();
+void DefaultParameters(ParsedInput &input);
 
 int main(int argc, const char * argv[]) {
     runTests();
@@ -43,15 +44,15 @@ int main(int argc, const char * argv[]) {
     GlobalInit();
     
     ParsedInput input;
-    input = DefaultParameters(input)
+    DefaultParameters(input);
     
     Raytracer raytracer;
     Framebuffer colorBuffer(input.width, input.height);
     
     colorBuffer.Clear();
     auto timeStart = std::chrono::system_clock::now();
-//        raytracer.RenderScene(input.camera, input.scene, &colorBuffer, input.maxRayRecursion);
-    raytracer.RenderSceneParallel(input.camera, input.scene, &colorBuffer, input.maxRayRecursion, THREADS_COUNT);
+    raytracer.RenderScene(input.camera, input.scene, &colorBuffer, input.maxRayRecursion);
+//    raytracer.RenderSceneParallel(input.camera, input.scene, &colorBuffer, input.maxRayRecursion, THREADS_COUNT);
     auto timeEnd = std::chrono::system_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(timeEnd - timeStart);
     std::cout << "Time: " << elapsed.count()/1000.f << std::endl;
@@ -64,7 +65,7 @@ int main(int argc, const char * argv[]) {
 
 void DefaultParameters(ParsedInput &input)
 {
-    input.camera = Camera(glm::vec3(0.0f, 5.0f, -10.0f),
+    input.camera = Camera(glm::vec3(0.0f, 5.0f, 10.0f),
                           glm::vec3(0.0f, 0.0f, 0.0f),
                           glm::vec3(0.0f, 1.0f, 0.0f),
                           glm::radians(60.0));
@@ -122,15 +123,16 @@ WorldScene CreateScene()
                          4.0f,
                          0.0f);
     std::vector<Triangle> triangles = {
-        Triangle(glm::vec3(-50.0f, -5.0f, -50.0f),
-                 glm::vec3(+50.0f, -5.0f, -50.0f),
-                 glm::vec3(0.0f, -5.0f, 50.0f),
+        Triangle(
+                 glm::vec3(+50.0f, -5.0f, +50.0f),
+                 glm::vec3(-50.0f, -5.0f, +50.0f),
+                 glm::vec3(0.0f, -5.0f, -50.0f),
                  cubeMatrial)
     };
     
     
     std::vector<Light> lights = {
-        Light(glm::vec4(0.0f, 10.0f, 0.0f, 1.0f),
+        Light(glm::vec4(0.0f, -10.0f, 0.0f, 1.0f),
               glm::vec4(0.8f, 0.8f, 0.8f, 1.0f)),
 //        Light(glm::vec4(0.0f, 2.0f, -10.0f, 0.0f),
 //              glm::vec4(1.0f, 1.0f, 0.1f, 1.0f))

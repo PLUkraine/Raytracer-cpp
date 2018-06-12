@@ -63,7 +63,8 @@ int Framebuffer::GetSizeInBytes() const
 
 void Framebuffer::SetPixelRGB(int x, int y, BYTE r, BYTE g, BYTE b)
 {
-    BYTE *p_pixel = &this->m_pixels[(m_height-1-y)*m_width*m_channels + x*m_channels];
+    // write pixels in reverse
+    BYTE *p_pixel = &this->m_pixels[(m_height-1-y)*m_width*m_channels + (m_width-1-x)*m_channels];
     *(p_pixel) = b;
     *(p_pixel+1) = g;
     *(p_pixel+2) = r;
