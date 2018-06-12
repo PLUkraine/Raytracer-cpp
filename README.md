@@ -16,14 +16,21 @@ Include both of them before compiling this application.
 
 ## Screenshots
 
-Table with 4 spheres and 2 ellipsoids
+Default Scene
 
-![screenshot1](https://image.ibb.co/eFzWV8/scene4_specular.png)
+![screenshot3](https://image.ibb.co/gBY3co/out.png)
+
+Standford Dragon
+
+![screenshot4](https://image.ibb.co/jxU408/scene7.png)
 
 1000 Spheres
 
 ![screenshot2](https://image.ibb.co/j68aq8/scene5.png)
 
-Default Scene
+Table with 4 spheres and 2 ellipsoids
 
-![screenshot3](https://image.ibb.co/gBY3co/out.png)
+![screenshot1](https://image.ibb.co/eFzWV8/scene4_specular.png)
+
+
+
