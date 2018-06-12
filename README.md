@@ -1,6 +1,13 @@
 # Raytracer-cpp
 Implementation of a raytracing algorithm for CG.
 
+## Features
+This project features an implementation of a basic raycasting algorithm to create rich and beautiful images. It is capable of rendering spheres, ellipsoids and triangles.
+
+To shade the scene the Blinn-Phong lighning model was used. In addition, this project has recursive raytracing imlemented to support reflectivity (and refraction in a future).
+
+It doesn't feature early collision test to reduce number of ray-object intersection tests yet. However, it features multithreaded solution to speed the rendering process up.
+
 ## Dependencies
 This project uses [GLM](https://glm.g-truc.net/0.9.9/index.html) and [FreeImage](http://freeimage.sourceforge.net/) libraries.
 Include both of them before compiling this application.
