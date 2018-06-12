@@ -65,7 +65,7 @@ IntersectionInfo Raytracer::FindClosestIntersection(Ray cameraRay, const WorldSc
     IntersectionInfo answer;
     answer.hasIntesected = false;
     
-    for (Sphere sphere : scene.spheres) {
+    for (const Sphere &sphere : scene.spheres) {
         // instead of transforming the sphere to the world coordinates,
         // we transform the ray to the model coodinates
         Ray TransformedRay = cameraRay.Transform(sphere.GetInverseTransform());
@@ -80,7 +80,7 @@ IntersectionInfo Raytracer::FindClosestIntersection(Ray cameraRay, const WorldSc
         }
     }
     // same applies to the triangle
-    for (Triangle triangle : scene.triangles) {
+    for (const Triangle &triangle : scene.triangles) {
         Ray transformedRay = cameraRay.Transform(triangle.GetInverseTransform());
         IntersectionInfo collision = PerformCollisionTest<Triangle>(transformedRay, triangle);
         

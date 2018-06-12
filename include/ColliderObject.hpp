@@ -22,7 +22,7 @@ public:
     glm::vec3 p0, p1;
     
     glm::vec3 GetPoint(float t) const;
-    Ray Transform(glm::mat4 trans) const;
+    Ray Transform(const glm::mat4 &trans) const;
 };
 
 
@@ -43,7 +43,7 @@ public:
     glm::mat4 GetInverseTransform() const;
     glm::mat4 GetNormalTransform() const;
     
-    void SetTransform(glm::mat4 trans);
+    void SetTransform(const glm::mat4 &trans);
 };
 
 class Sphere : public CollisionObject
@@ -58,13 +58,15 @@ public:
 
 class Triangle : public CollisionObject
 {
+private:
+    glm::vec3 m_normal;
 public:
     glm::vec3 a;
     glm::vec3 b;
     glm::vec3 c;
 
     Triangle(glm::vec3 a, glm::vec3 b, glm::vec3 c, Material mat);
-    glm::vec3 GetNormal(glm::vec3 point) const;
+    glm::vec3 GetNormal(glm::vec3) const;
 };
 
 #endif /* ColliderObject_hpp */

@@ -20,7 +20,7 @@ bool inB(T a, T b, T v) {
 
 bool approxEq(float a, float b);
 int sgn(float x);
-glm::vec3 transform(glm::mat4 mat, glm::vec3 v, bool isPoint=true);
-glm::vec3 transformNormal(glm::mat4 trans, glm::vec3 normal);
+glm::vec3 transform(const glm::mat4 &mat, const glm::vec3 &v, bool isPoint=true);
+glm::vec3 transformNormal(const glm::mat4 &trans, const glm::vec3 &normal);
 
 #endif /* Utils_hpp */

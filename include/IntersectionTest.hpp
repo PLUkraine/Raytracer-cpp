@@ -23,8 +23,8 @@ class IntersectionTest
 {
 public:
     
-    IntersectionInfo Test(Ray r, Sphere s) const;
-    IntersectionInfo Test(Ray r, Triangle t) const;
+    IntersectionInfo Test(Ray r, const Sphere &s) const;
+    IntersectionInfo Test(Ray r, const Triangle &t) const;
     
 private:
     float DiscriminantSqr(float a, float b, float c) const;

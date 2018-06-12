@@ -13,7 +13,7 @@
 #include "Utils.hpp"
 
 
-IntersectionInfo IntersectionTest::Test(Ray r, Sphere s) const
+IntersectionInfo IntersectionTest::Test(Ray r, const Sphere &s) const
 {
     IntersectionInfo answer;
     answer.hasIntesected = false;
@@ -44,7 +44,7 @@ IntersectionInfo IntersectionTest::Test(Ray r, Sphere s) const
     }
     return answer;
 }
-IntersectionInfo IntersectionTest::Test(Ray r, Triangle t) const
+IntersectionInfo IntersectionTest::Test(Ray r, const Triangle &t) const
 {
     IntersectionInfo answer;
     answer.hasIntesected = false;

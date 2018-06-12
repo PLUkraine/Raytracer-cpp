@@ -20,12 +20,12 @@ int sgn(float x)
     return x > 0 ? 1 : -1;
 }
 
-glm::vec3 transform(glm::mat4 mat, glm::vec3 v, bool isPoint)
+glm::vec3 transform(const glm::mat4 &mat, const glm::vec3 &v, bool isPoint)
 {
     return mat * glm::vec4(v, isPoint ? 1.0f : 0.0f);
 }
 
-glm::vec3 transformNormal(glm::mat4 trans, glm::vec3 normal) {
+glm::vec3 transformNormal(const glm::mat4 &trans, const glm::vec3 &normal) {
     glm::vec3 answer = trans * glm::vec4(normal, 0.0f);
     return glm::normalize(answer);
 }

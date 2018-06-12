@@ -31,7 +31,7 @@ public:
     
 private:
     template <typename T>
-    IntersectionInfo PerformCollisionTest(Ray r, T obj) const
+    IntersectionInfo PerformCollisionTest(Ray r, const T& obj) const
     {
         IntersectionInfo answer = IntersectionTest().Test(r, obj);
         return answer;
