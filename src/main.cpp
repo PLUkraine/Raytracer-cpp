@@ -132,7 +132,7 @@ WorldScene CreateScene()
     
     
     std::vector<Light> lights = {
-        Light(glm::vec4(0.0f, -10.0f, 0.0f, 1.0f),
+        Light(glm::vec4(0.0f, 10.0f, 0.0f, 1.0f),
               glm::vec4(0.8f, 0.8f, 0.8f, 1.0f)),
 //        Light(glm::vec4(0.0f, 2.0f, -10.0f, 0.0f),
 //              glm::vec4(1.0f, 1.0f, 0.1f, 1.0f))
