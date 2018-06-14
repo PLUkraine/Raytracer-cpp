@@ -162,7 +162,7 @@ glm::vec4 Raytracer::ComputeLight(glm::vec3 direction, glm::vec4 lightcolorn, gl
 // check if point is in the shadow
 bool Raytracer::IsInShadow(const WorldScene& scene, const Light& light, glm::vec3 point, glm::vec3 towardObject) const
 {
-    glm::vec3 correctedPoint = point + towardObject/1000.f;
+    glm::vec3 correctedPoint = point + towardObject/100.f;
     Ray lightRay = {
         correctedPoint,
         CalculateLightDirection(light, correctedPoint)
@@ -178,7 +178,7 @@ glm::vec4 Raytracer::RecursiveShading(Ray ray, const WorldScene &scene, int recu
     IntersectionInfo collision = FindClosestIntersection(ray, scene);
     if (collision.hasIntesected) {
         glm::vec4 color = Shade(scene, collision, ray.p0);
-        glm::vec4 reflectionColor = ReflectionShade(ray, scene, collision, recurseLevel);
+        glm::vec4 reflectionColor = ReflectionShade(ray, scene, collision, recurseLevel) * collision.material.specular;
         
         return glm::clamp(color + reflectionColor, 0.0f, 1.0f);
     } else {
@@ -193,7 +193,7 @@ glm::vec4 Raytracer::ReflectionShade(const Ray &originalRay, const WorldScene &s
     
     glm::vec3 reflectionDir = glm::reflect(originalRay.p1, collision.normal);
     Ray reflectionRay = {
-        collision.point + reflectionDir/1000.0f,
+        collision.point + reflectionDir/100.0f,
         reflectionDir
     };
     glm::vec4 reflectionColor = collision.material.reflectiveness * RecursiveShading(reflectionRay, scene, recurseLevel - 1);

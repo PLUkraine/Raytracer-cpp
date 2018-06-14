@@ -146,7 +146,7 @@ void InputParser::Clear()
                           glm::vec4(0.0f),
                           glm::vec4(0.0f),
                           1.0f,
-                          0.4f);
+                          1.0f);
     this->m_vertices.clear();
     this->m_result = ParsedInput();
     

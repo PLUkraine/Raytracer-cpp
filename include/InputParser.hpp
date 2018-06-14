@@ -20,7 +20,7 @@ struct ParsedInput
 {
     Camera camera;
     WorldScene scene;
-    int maxRayRecursion = 3;
+    int maxRayRecursion = 5;
     int width = 640;
     int height = 480;
     std::string outputFilepath = "raytrace.png";
