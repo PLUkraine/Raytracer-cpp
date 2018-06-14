@@ -26,11 +26,11 @@ Standford Dragon
 
 1000 Spheres
 
-![screenshot2](https://image.ibb.co/j68aq8/scene5.png)
+![screenshot2](https://image.ibb.co/iVygkJ/scene5.png)
 
 Table with 4 spheres and 2 ellipsoids
 
-![screenshot1](https://image.ibb.co/eFzWV8/scene4_specular.png)
+![screenshot1](https://image.ibb.co/bDJ8Xy/scene4_specular.png)
 
 
 
